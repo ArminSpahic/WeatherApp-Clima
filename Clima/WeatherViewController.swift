@@ -21,7 +21,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
     @IBAction func `switch`(_ sender: UISwitch) {
         
         if sender.isOn {
-            let farenTemp = (weatherDataModel.temperature + Int(273.15))
+            let farenTemp = Int(Double(weatherDataModel.temperature) + 273.15)
             temperatureLabel.text = String(farenTemp) + "°F"
             
             
