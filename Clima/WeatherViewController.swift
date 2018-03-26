@@ -21,7 +21,12 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
     @IBAction func `switch`(_ sender: UISwitch) {
         
         if sender.isOn {
+            let farenTemp = (weatherDataModel.temperature + Int(273.15))
+            temperatureLabel.text = String(farenTemp) + "°F"
             
+            
+        } else {
+           temperatureLabel.text = String(weatherDataModel.temperature) + "°C"
         }
     }
     
@@ -41,6 +46,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        faren.isOn = false
     
        
         //TODO:Set up the location manager here.
@@ -128,7 +134,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
     func updateUIWithWeatherData() {
         
         cityLabel.text = weatherDataModel.city
-        temperatureLabel.text = "\(weatherDataModel.temperature)°"
+        temperatureLabel.text = String(weatherDataModel.temperature) + "°C"
         weatherIcon.image = UIImage(named: weatherDataModel.weatherIconName)
         
     }
